@@ -1,0 +1,32 @@
+-----------------------
+Docker Threat Modeling
+-----------------------
+Spoofing - Client traffic from the Docker client to the Docker daemon or registry could be spoofed, or intercepted by a malicious party and replayed. Transport Layer Security (TLS) can be implemented to secure communication affecting the client.
+
+Tampering - An attacker gets control of the Docker client. This could lead to tampering of the Dockerfile that’s used to build the image affecting Dockerfile.
+
+Repudiation - A user may make changes to the daemon that are not legitimate, leading to misconfiguration.
+
+Information Disclosure - The Docker host file system may be misconfigured, exposing sensitive information and leading to insecure defaults.
+
+Denial of Service - Daemon memory for the running container may be over-allocated, leading to a misconfiguration.
+
+Elevation of Privilege - Daemon privilege may be escalated if a user name is not defined and the container runs as root, which gives access to any other container on the same host, leading to isolation tampering.
+--------------------------
+Kubernetes Threat Modeling
+--------------------------
+
+Spoofing - Calls to the API server could be spoofed by a malicious caller. This can be mitigated by ensuring all calls to the API server are over TLS, ensuring that anonymous and basic authentication is not used.
+
+Tampering - The configuration of etcd may be tampered with by an attacker, modifying vital system-level configurations such as pod specs. This can be mitigated by restricting permissions on etcd files to 644 or more restrictive and that the pod spec file is set to root ownership.
+
+Repudiation - Unauthorized changes may be made to the API server. This can be mitigated by making sure only trusted callers can authenticate to the API server by enforcing TLS.
+Information Disclosure - Sensitive information may be exposed via the etcd key-value store. This can be mitigated by encrypting etcd content at rest and using TLS to access etcd only from the kube-apiserver. All other traffic should be rejected.
+
+Denial of Service - excessive traffic to the API server can overwhelm the endpoint. kube-scheduler can incorrectly schedule the pod.
+
+Elevation of Privilege - privilege can be abused by using the privileged flag. This should be avoided in all cases. This affects kube-apiserver.
+
+
+Docker-bench Run Results and Analysis
+From the failed findings, select and document 3 findings from the Docker-bench results that you want to harden based on the 5 attack surface areas you identified in Step 1. At least 1 of the 3 hardened findings should be different from the ones mentioned in the exercise (i.e. 5.10, 5.14, and 5.22).
