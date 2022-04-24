@@ -1,0 +1,5 @@
+A test plan should generally include an analysis of the following. The intent is to be diligent and disciplined to avoid outages. The test plan is all about testing changes to a system in a non-production system that mimics production. The primary goal is to avoid an outage and undesired consequences.
+
+How will you test the changes? The change will be tested in a non-production environment such as a test cluster.
+What is the environment? The environment is a non-production cluster.
+How will you ensure the changes don't negatively affect your cluster? The change should be tested in a non-production cluster. Once the change is applied, you should monitor metrics using your observability and monitoring techniques like Prometheus and Grafana.
