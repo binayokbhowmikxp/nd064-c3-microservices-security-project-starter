@@ -1,0 +1,24 @@
+Incident commander name
+Binayok Bhowmik , IT Incident Manager
+
+Executive summary of what happened
+Customers complained that they were unable to use our company site as it was too slow and unresponsive. Customers were unable to use the valuable service that 
+our esteem company offers.
+
+Summary of what was affected
+Three pods running three different crypto miners were launched and the application in kubernetes cluster became very slow in providing response degrading user
+experience.
+
+Summary of the impact
+The attacker managed to run crypto miners on our system, which is undesirable. Usually, crypto-mining consumes a lot of CPU. Let's pivot to the Kubernetes/compute resources dashboard to observe the CPU utilization:
+Click on the magnifying glass icon on the left-side panel. Search for "Kubernetes/Compute Resources"
+We can see that in the last few minutes there is a significant spike in the CPU utilization for both Kubernetes and the default. This is related to the crypto miners being started.
+
+Summary of the remediation steps
+The administrator noticed the event through Grafana monitoring and evicted the pods
+The Falco Dashboard Udacity in Grafana also begins to show a flat line for crypto-mining-related alerts, as the crypto mining pods are evicted
+
+
+Summary of lessons learned
+We should review access to the Kubernetes API server from administrative terminals and the Grafana dashboards.
+It's possible to use admission controllers to allow only certain images to be imported and started within the pods.
