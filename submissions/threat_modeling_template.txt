@@ -27,11 +27,12 @@ Denial of Service - excessive traffic to the API server can overwhelm the endpoi
 
 Elevation of Privilege - privilege can be abused by using the privileged flag. This should be avoided in all cases. This affects kube-apiserver.
 
-
+-------------------------------------
 Docker-bench Run Results and Analysis
+-------------------------------------
 
+I have chosen three findings to evaluate and remediate. 
 
-I have chosen three findings to evaluate and remediate. Let's take a closer look at these three.
 [FAIL] 1.2.3 Ensure auditing is configured for the docker daemon (Scored)
 [FAIL] 5.10 Ensure that the memory usage for container is limited (Scored)
 [FAIL] 5.14 Ensure that the 'on-failure' container restart policy is set to '5' (Scored)
